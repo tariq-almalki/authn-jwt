@@ -1,0 +1,9 @@
+GET http://localhost:5500/
+
+###
+
+GET http://localhost:5500/users
+
+###
+
+POST http://localhost:5500/user

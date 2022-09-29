@@ -1,2 +1,7 @@
-/node_modules/
-/config/.env
+# excluded 
+/backend/node_modules/
+/backend/config/.env
+
+/frontend/node_modules/
+
+/.vscode
