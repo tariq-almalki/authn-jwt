@@ -4,7 +4,7 @@
     border-radius: 10px;
 
     display: grid;
-    grid-template-rows: 150px repeat(3, 75px) 100px;
+    grid-template-rows: 100px repeat(3, 75px) 100px;
     grid-template-columns: 290px;
     justify-content: center;
     align-items: center;
@@ -48,6 +48,7 @@ p {
 }
 
 .button {
+    justify-self: center;
     border-radius: 5px;
     background-color: rgb(64, 64, 255);
     padding: 5px;
@@ -57,6 +58,7 @@ p {
     outline: none;
     border: none;
     transition: all 0.3s ease;
+    width: 80%;
 }
 
 .button:hover {
@@ -75,22 +77,13 @@ p {
 }
 
 .button2 {
-    background-color: white;
-    color: rgb(64, 64, 255);
-    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    background: none;
+    text-decoration: underline;
     border: none;
     outline: none;
-    padding: 2px;
     font-weight: bold;
+    font-size: 16px;
     font-family: 'Cairo', sans-serif;
-    height: min-content;
     transition: all 0.1s ease;
-}
-
-.button2:hover {
-    box-shadow: 4px 4px 15px -9px black;
-}
-
-.button2:active {
-    transform: scale(95%);
 }

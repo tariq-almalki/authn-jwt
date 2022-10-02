@@ -12,13 +12,15 @@ export function SignIn(props) {
                 <p className={classes.p}>Wish you happy day!</p>
                 <label htmlFor=''>
                     Email <br />
-                    <input type='text' className={classes.input} />
+                    <input type='text' className={classes.input} required />
                 </label>
                 <label htmlFor=''>
                     Password <br />
-                    <input type='text' className={classes.input} />
+                    <input type='text' className={classes.input} required />
                 </label>
-                <button className={classes.button}>Sign In</button>
+                <button type='submit' className={classes.button}>
+                    Sign In
+                </button>
             </form>
             <div>
                 <p className={classes.p2}>Don't have an account? </p>
