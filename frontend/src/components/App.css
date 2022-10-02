@@ -1,0 +1,13 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background: linear-gradient(115deg, #000000 0%, #00c508 55%, #000000 100%),
+        linear-gradient(115deg, #0057ff 0%, #020077 100%),
+        conic-gradient(from 110deg at -5% 35%, #000000 0deg, #faff00 360deg),
+        conic-gradient(from 220deg at 30% 30%, #ff0000 0deg, #0000ff 220deg, #240060 360deg),
+        conic-gradient(from 235deg at 60% 35%, #0089d7 0deg, #0000ff 180deg, #240060 360deg);
+    background-blend-mode: soft-light, soft-light, overlay, screen, normal;
+}

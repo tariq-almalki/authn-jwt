@@ -1,0 +1,96 @@
+.form {
+    height: fit-content;
+    width: 375px;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-rows: 120px repeat(6, max-content) 100px;
+    grid-template-columns: 290px;
+    justify-content: center;
+    align-items: center;
+
+    backdrop-filter: blur(6px) saturate(166%);
+    -webkit-backdrop-filter: blur(6px) saturate(166%);
+    background-color: rgba(255, 255, 255, 0.69);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+
+    font-family: 'Cairo', sans-serif;
+    color: black;
+
+    margin-bottom: 15px;
+
+    transition: all 0.4s ease;
+}
+
+.form:hover {
+    box-shadow: 4px 4px 15px -9px black;
+}
+
+h1 {
+    justify-self: center;
+    font-family: 'Cairo', sans-serif;
+}
+
+p {
+    justify-self: center;
+}
+
+.input {
+    display: inline-block;
+    width: 98%;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    border-radius: 5px;
+}
+
+.button {
+    border-radius: 5px;
+    background-color: rgb(64, 64, 255);
+    padding: 5px;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    box-shadow: 4px 4px 15px -9px black;
+}
+
+.button:active {
+    transform: scale(95%);
+}
+
+.p2 {
+    display: inline-block;
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    margin-right: 5px;
+}
+
+.button2 {
+    background-color: white;
+    color: rgb(64, 64, 255);
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: 2px;
+    font-weight: bold;
+    font-family: 'Cairo', sans-serif;
+    height: min-content;
+    transition: all 0.1s ease;
+}
+
+.button2:hover {
+    box-shadow: 4px 4px 15px -9px black;
+}
+
+.button2:active {
+    transform: scale(95%);
+}
