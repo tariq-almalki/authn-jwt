@@ -11,11 +11,13 @@ export async function connect() {
         console.log('failed to connect'.red.bold);
     });
 
-    return await mongoose.connect(process.env.MONGO_URI, {
+    const sameMongoose = await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         family: 4, // use IPv4 only,
     });
+
+    return sameMongoose;
 
     // mongoose2 is the same object as mongoose because connect return 'this'
     // const mongoose2 = await mongoose.connect(

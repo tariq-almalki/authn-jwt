@@ -2,10 +2,10 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 import { usersRouter } from './routes/users.routes.mjs';
 import colors from 'colors';
-import { connect } from './config/database.connection.mjs';
-
 // to connect to Database
-export const mongoose = connect();
+const { connect } = await import('./config/database.connection.mjs');
+
+export const mongoose = await connect();
 
 dotenv.config({
     path: './config/.env',

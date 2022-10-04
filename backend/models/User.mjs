@@ -1,4 +1,4 @@
-import { mongoose } from '../server.mjs';
+const { mongoose } = await import('../server.mjs');
 const { Schema } = mongoose;
 
 const UserSchema = new Schema(
@@ -13,7 +13,7 @@ const UserSchema = new Schema(
         username: {
             type: String,
             trim: true,
-            minLength: [3, 'Must be at least 6, got {VALUE}'],
+            minLength: [6, 'Must be at least 6, got {VALUE}'],
             maxLength: [12, 'Must  be at most, got {VALUE}'],
             required: [true, 'Username is Required'],
         },

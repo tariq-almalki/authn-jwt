@@ -7,7 +7,7 @@ export const usersRouter = express.Router();
 
 usersRouter.get('/', defaultPage);
 
-usersRouter.route('/api/users').get(getUsers);
+usersRouter.get('/api/users', getUsers);
 
 // prettier-ignore
 usersRouter.route('/api/users/:id')
