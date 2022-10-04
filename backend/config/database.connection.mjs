@@ -11,7 +11,7 @@ export async function connect() {
         console.log('failed to connect'.red.bold);
     });
 
-    await mongoose.connect('mongodb://localhost:27017/users', {
+    return await mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         family: 4, // use IPv4 only,

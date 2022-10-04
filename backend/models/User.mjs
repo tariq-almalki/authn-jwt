@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import { mongoose } from '../server.mjs';
 const { Schema } = mongoose;
 
 const UserSchema = new Schema(
@@ -39,4 +39,7 @@ const UserSchema = new Schema(
 
 // param 1 is the name of the model
 // param 2 is the Schema
-export const User = mongoose.model('User', UserSchema);
+// we are creating a document from a model.
+// you can provide a third parm for model, which is the name of the collection(optional, inferred from model name).
+// you should name pluralize the name of the model and lowercase it.
+export const User = mongoose.model('User', UserSchema, 'users');
