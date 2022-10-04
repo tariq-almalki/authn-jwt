@@ -37,6 +37,6 @@ const UserSchema = new Schema(
     }
 );
 
-// 1 param is the name of the model
-// 2 param is the Schema
+// param 1 is the name of the model
+// param 2 is the Schema
 export const User = mongoose.model('User', UserSchema);
