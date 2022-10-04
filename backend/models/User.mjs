@@ -1,0 +1,42 @@
+import mongoose from 'mongoose';
+const { Schema } = mongoose;
+
+const UserSchema = new Schema(
+    {
+        name: {
+            type: String,
+            trim: true,
+            minLength: [3, 'Must be at least 3, got {VALUE}'],
+            maxLength: [24, 'Must be at most 24, got {VALUE}'],
+            required: [true, 'Name is Required'],
+        },
+        username: {
+            type: String,
+            trim: true,
+            minLength: [3, 'Must be at least 6, got {VALUE}'],
+            maxLength: [12, 'Must  be at most, got {VALUE}'],
+            required: [true, 'Username is Required'],
+        },
+        email: {
+            type: String,
+            trim: true,
+            required: [true, 'Email is Required'],
+            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Invalid Email Address'],
+        },
+        password: {
+            type: String,
+            trim: true,
+            // minLength: [8, 'Must be at least 8, got {VALUE}'],
+            // maxLength: [15, 'Must be at most 15, got {VALUE}'],
+            required: [true, 'Password is Required'],
+        },
+    },
+    {
+        autoIndex: true,
+        timestamps: true,
+    }
+);
+
+// 1 param is the name of the model
+// 2 param is the Schema
+export const User = mongoose.model('User', UserSchema);
