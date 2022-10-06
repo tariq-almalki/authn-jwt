@@ -3,9 +3,7 @@ import * as dotenv from 'dotenv';
 import { usersRouter } from './routes/users.routes.mjs';
 import colors from 'colors';
 // to connect to Database
-const { connect } = await import('./config/database.connection.mjs');
-
-export const mongoose = await connect();
+import { mongoose_3 as mongoose } from './db/database.connection.mjs';
 
 dotenv.config({
     path: './config/.env',

@@ -1,5 +1,5 @@
 export default (async function () {
-    const { mongoose } = await import('../server.mjs');
+    const { mongoose_3: mongoose } = await import('../db/database.connection.mjs');
     const { Schema } = mongoose;
 
     const UserSchema = new Schema(
