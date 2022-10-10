@@ -75,8 +75,31 @@ p {
     font-family: 'Cairo', sans-serif;
     margin-right: 5px;
 }
+/* 
+.homepage-image {
+    vertical-align: middle;
+    backdrop-filter: blur(6px) saturate(166%);
+    -webkit-backdrop-filter: blur(6px) saturate(166%);
+    background-color: rgba(255, 255, 255, 0.69);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
 
-.button2 {
+.homepage-image:hover {
+    box-shadow: 0px 0px 5px -3px black;
+}
+
+.homepage-link {
+    align-self: start;
+    justify-self: start;
+    height: min-content;
+    width: min-content;
+} */
+
+/* .button2 {
     color: rgb(255, 255, 255);
     background: none;
     text-decoration: underline;
@@ -86,4 +109,4 @@ p {
     font-size: 16px;
     font-family: 'Cairo', sans-serif;
     transition: all 0.1s ease;
-}
+} */
