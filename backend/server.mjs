@@ -11,6 +11,8 @@ dotenv.config({
 
 const app = express();
 
+app.use(express.urlencoded({ urlencoded: true }));
+
 // "use" does partial matching, so '/' will match '/', '/users', ...
 // other METHOD() does specific matching, if you use '/' then '/' will match only.
 

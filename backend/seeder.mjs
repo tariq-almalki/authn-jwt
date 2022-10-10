@@ -1,11 +1,11 @@
 import dotenv from 'dotenv';
 import colors from 'colors';
+import { default as users } from './dummy-data/users.mjs';
 
 dotenv.config({
     path: './config/.env',
 });
 
-import { default as users } from './dummy-data/users.mjs';
 const { default: promiseUser } = await import('./models/User.mjs');
 
 const User = await promiseUser;

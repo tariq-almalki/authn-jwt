@@ -43,7 +43,7 @@ export default (async function () {
     // param 1 is the name of the model
     // param 2 is the Schema
     // we are creating a document from a model.
-    // you can provide a third parm for model, which is the name of the collection(optional, inferred from model name).
-    // you should name pluralize the name of the model and lowercase it.
+    // you can provide a 3 param for model, which is the name of the collection(optional, inferred from model name).
+    // to obtain the name of the collection, you should pluralize the name of the model and lowercase it.
     return mongoose.model('User', UserSchema, 'users');
 })();
