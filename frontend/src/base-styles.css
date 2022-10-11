@@ -12,4 +12,5 @@ body {
     background-blend-mode: soft-light, soft-light, overlay, screen, normal;
     /* filter: blur(10px); */
     backdrop-filter: blur(10px);
+    overflow: hidden;
 }
