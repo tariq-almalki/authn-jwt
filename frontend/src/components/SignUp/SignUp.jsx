@@ -10,8 +10,8 @@ export function SignUp() {
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <Container>
                     {/* inside of "SignUp" component it will point by default to "/signup" */}
-                    {/* you don't have to include action='/signup' in "Form" component */}
-                    <Form action='/signup' method='post' className={classes.form}>
+                    {/* thus you don't have to include action='/signup' in "Form" component */}
+                    <Form action='/signup' method='get' className={classes.form}>
                         <h1 className={classes.h1}>Sign Up</h1>
                         <p>it's free and only takes a minute</p>
                         <label className={classes.label}>
