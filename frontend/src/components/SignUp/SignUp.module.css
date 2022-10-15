@@ -90,13 +90,6 @@ p {
     position: relative;
 }
 
-.fa-circle-exclamation {
-    position: absolute;
-    top: 37px;
-    right: 10px;
-    color: red;
-}
-
 /* .button2 {
     color: rgb(255, 255, 255);
     background: none;

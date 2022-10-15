@@ -1,0 +1,30 @@
+.floating {
+    width: max-content;
+    backdrop-filter: blur(6px) saturate(166%);
+    -webkit-backdrop-filter: blur(6px) saturate(166%);
+    background-color: rgba(255, 255, 255, 0.903);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    color: rgb(255, 53, 53);
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 90%;
+    pointer-events: none;
+    line-height: 20px;
+}
+
+.arrow {
+    position: absolute;
+    background: rgb(255, 255, 255);
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+}
+
+.fa-circle-exclamation {
+    position: absolute;
+    top: 37px;
+    right: 10px;
+    color: red;
+}
