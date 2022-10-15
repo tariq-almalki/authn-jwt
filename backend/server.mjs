@@ -1,23 +1,33 @@
 import express from 'express';
 import * as dotenv from 'dotenv';
-import { usersRouter } from './routes/users.routes.mjs';
+import morgan from 'morgan';
 import colors from 'colors';
-// to connect to Database
-import { mongoose_3 as mongoose } from './db/database.connection.mjs';
+
+// routes
+import { usersRouter } from './routes/users.routes.mjs';
 
 dotenv.config({
     path: './config/.env',
 });
 
+// to connect to Database
+await import('./db/database.connection.mjs');
+
 const app = express();
 
-app.use(express.urlencoded({ urlencoded: true }));
+if (process.env.NODE_ENV == 'development') {
+    app.use(
+        morgan('dev', {
+            // this option is used for logging requests instead of responses.
+            // immediate: true,
+        })
+    );
+}
 
-// "use" does partial matching, so '/' will match '/', '/users', ...
+// "app.use" does partial matching, so '/' will match '/', '/users', ...
 // other METHOD() does specific matching, if you use '/' then '/' will match only.
-
 app.use('/', usersRouter);
 
 app.listen(process.env.PORT, () => {
-    console.log('server started at PORT 5500'.yellow.bold);
+    console.log('server started at PORT 5500'.white.bold);
 });

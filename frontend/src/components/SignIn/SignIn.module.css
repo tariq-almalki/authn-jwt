@@ -38,7 +38,7 @@ p {
 
 .input {
     display: inline-block;
-    width: 98%;
+    width: 100%;
     outline: none;
     font-family: 'Roboto', sans-serif;
     padding: 5px;

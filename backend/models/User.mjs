@@ -1,14 +1,19 @@
 export default (async function () {
-    const { mongoose_3: mongoose } = await import('../db/database.connection.mjs');
+    const { mongooseInstance: mongoose } = await import('../db/database.connection.mjs');
     const { Schema } = mongoose;
 
     const UserSchema = new Schema(
         {
+            _id: {
+                type: String,
+                trim: true,
+                required: [true, 'Id is Required'],
+            },
             name: {
                 type: String,
                 trim: true,
                 minLength: [3, 'Must be at least 3, got {VALUE}'],
-                maxLength: [24, 'Must be at most 24, got {VALUE}'],
+                maxLength: [15, 'Must be at most 24, got {VALUE}'],
                 required: [true, 'Name is Required'],
             },
             username: {
@@ -29,8 +34,8 @@ export default (async function () {
             password: {
                 type: String,
                 trim: true,
-                // minLength: [8, 'Must be at least 8, got {VALUE}'],
-                // maxLength: [15, 'Must be at most 15, got {VALUE}'],
+                minLength: [8, 'Must be at least 8, got {VALUE}'],
+                maxLength: [15, 'Must be at most 15, got {VALUE}'],
                 required: [true, 'Password is Required'],
             },
         },

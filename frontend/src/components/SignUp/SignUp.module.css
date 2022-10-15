@@ -38,13 +38,23 @@ p {
 
 .input {
     display: inline-block;
-    width: 98%;
+    width: 100%;
     outline: none;
     font-family: 'Roboto', sans-serif;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1.75px solid #ccc;
     border-radius: 3px;
     border-radius: 5px;
+}
+
+.input-invalid {
+    background-color: rgb(255, 226, 226);
+    border-color: rgb(254, 85, 85);
+}
+
+.input-valid {
+    background-color: rgb(205, 254, 197);
+    border-color: rgb(9, 217, 9);
 }
 
 .button {
@@ -74,6 +84,17 @@ p {
     color: white;
     font-family: 'Cairo', sans-serif;
     margin-right: 5px;
+}
+
+.label {
+    position: relative;
+}
+
+.fa-circle-exclamation {
+    position: absolute;
+    top: 37px;
+    right: 10px;
+    color: red;
 }
 
 /* .button2 {

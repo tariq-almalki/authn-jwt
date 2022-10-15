@@ -1,48 +1,26 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SignIn } from '../SignIn/SignIn.jsx';
+// 
 import { SignUp } from '../SignUp/SignUp.jsx';
-import { Container } from '../Container/Container.jsx';
-import { motion } from 'framer-motion';
+import { signUpErrorElement } from '../../router-errorElements/signup.errorElement.jsx';
+import { signUpAction } from '../../router-actions/signup.action.jsx';
+import { signUpLoader } from '../../router-loaders/signup.loader.jsx';
 
 export function Router() {
-    // Actions
-    // first executed on POST, PUT, DELETE, PATCH requests
-    // doesn't get executed on GET requests
-    // Actions are called whenever the app sends a non-get submission
-    const action = async ({ request }) => {
-        const data = Object.fromEntries(await request.formData());
-        console.log(data);
-    };
-
-    // Loaders
-    // first executed on GET requests
-    // second executed on POST, PUT, DELETE, PATCH requests
-    const loader = ({ request }) => {
-        console.log('loader first');
-    };
-
-    const errorElement = (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <Container>
-                <h1 style={{ color: 'red', fontWeight: 'bold' }}>Error Occurred</h1>
-            </Container>
-        </motion.div>
-    );
-
     const router = createBrowserRouter([
         {
             path: '/',
             element: <SignUp />,
-            action,
-            loader,
-            errorElement,
+            action: signUpAction,
+            loader: signUpLoader,
+            errorElement: signUpErrorElement,
         },
         {
             path: '/signup',
             element: <SignUp />,
-            action,
-            loader,
-            errorElement,
+            action: signUpAction,
+            loader: signUpLoader,
+            errorElement: signUpErrorElement,
         },
         {
             path: '/signin',
