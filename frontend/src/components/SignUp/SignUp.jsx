@@ -17,6 +17,7 @@ export function SignUp() {
     const [matchEmail, setMatchEmail] = useState(null);
     const [matchPassword, setMatchPassword] = useState(null);
     const [matchCPassword, setMatchCPassword] = useState(null);
+    const [isPasswordMatch, setIsPasswordMatch] = useState(null);
 
     function onInputNameHandler(event) {
         const pattern = new RegExp(event.target.pattern);
@@ -67,8 +68,6 @@ export function SignUp() {
         const pattern = new RegExp(event.target.pattern);
         const isMatch = pattern.test(event.target.value);
 
-        console.dir(event.target.form[4].value);
-
         if (event.type === 'blur') {
             return setMatchPassword(isMatch ? null : false);
         }
@@ -77,6 +76,15 @@ export function SignUp() {
 
         if (event.type === 'change') {
             setInputPassword(event.target.value);
+        }
+
+        const cPassword = event.target.form[4].value.trim();
+        const password = event.target.value.trim();
+        const isPasswordMatch = password === cPassword;
+        setIsPasswordMatch(isPasswordMatch);
+
+        if (isMatch) {
+            setIsPasswordMatch(isPasswordMatch);
         }
     }
 
@@ -92,6 +100,14 @@ export function SignUp() {
 
         if (event.type === 'change') {
             setInputCPassword(event.target.value);
+        }
+
+        const cPassword = event.target.form[3].value.trim();
+        const password = event.target.value.trim();
+        const isPasswordMatch = password === cPassword;
+
+        if (isMatch) {
+            setIsPasswordMatch(isPasswordMatch);
         }
     }
 
@@ -153,7 +169,7 @@ export function SignUp() {
                                         ? classes['input-valid']
                                         : classes['input-invalid']
                                 }`}
-                                pattern='^[a-zA-Z][a-zA-Z0-9-_\.]{6,12}$'
+                                pattern='^[a-zA-Z][a-zA-Z0-9-_\.]{5,12}$'
                                 minLength={6}
                                 maxLength={12}
                                 placeholder='username'
@@ -210,7 +226,7 @@ export function SignUp() {
                                 className={`${classes.input} ${
                                     matchPassword === null
                                         ? ''
-                                        : matchPassword
+                                        : matchPassword && isPasswordMatch
                                         ? classes['input-valid']
                                         : classes['input-invalid']
                                 }`}
@@ -230,6 +246,9 @@ export function SignUp() {
                                                     \n- must be at most 15 characters'
                                 />
                             )}
+                            {isPasswordMatch !== true && matchPassword === true ? (
+                                <Floating message="- Passwords doesn't match" />
+                            ) : null}
                         </label>
                         <label className={classes.label}>
                             Confirm Password <br />
@@ -244,7 +263,7 @@ export function SignUp() {
                                 className={`${classes.input} ${
                                     matchCPassword === null
                                         ? ''
-                                        : matchCPassword
+                                        : matchCPassword && isPasswordMatch
                                         ? classes['input-valid']
                                         : classes['input-invalid']
                                 }`}
@@ -264,6 +283,9 @@ export function SignUp() {
                                                     \n- must be at most 15 characters'
                                 />
                             )}
+                            {isPasswordMatch !== true && matchCPassword === true ? (
+                                <Floating message="- Passwords doesn't match" />
+                            ) : null}
                         </label>
                         <button type='submit' className={classes.button}>
                             Sign Up
