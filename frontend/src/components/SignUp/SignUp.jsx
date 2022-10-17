@@ -5,11 +5,12 @@ import { motion } from 'framer-motion';
 import { Form } from 'react-router-dom';
 import { Floating } from '../Floating/Floating.jsx';
 import { useState } from 'react';
+import { useLocalStorage } from '../Hooks/useLocalStorage.jsx';
 
 export function SignUp() {
-    const [inputName, setInputName] = useState('');
-    const [inputUsername, setInputUsername] = useState('');
-    const [inputEmail, setInputEmail] = useState('');
+    const [inputName, setInputName] = useLocalStorage('name', '');
+    const [inputUsername, setInputUsername] = useLocalStorage('username', '');
+    const [inputEmail, setInputEmail] = useLocalStorage('email', '');
     const [inputPassword, setInputPassword] = useState('');
     const [inputCPassword, setInputCPassword] = useState('');
     const [matchName, setMatchName] = useState(null);

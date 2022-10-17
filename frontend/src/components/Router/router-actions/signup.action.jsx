@@ -7,6 +7,7 @@ import { nanoid } from 'nanoid';
 // you can use the returned value, using useActionData() hook
 export const signUpAction = async ({ request }) => {
     const data = Object.fromEntries(await request.formData());
+
     return fetch(`http://localhost:5500/api/users/${nanoid()}`, {
         method: 'POST',
         mode: 'cors',
