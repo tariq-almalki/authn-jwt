@@ -2,12 +2,16 @@ import { StyledLink } from '../misc-components/StyledLink.jsx';
 import classes from './SignUp.module.css';
 import { Container } from '../Container/Container.jsx';
 import { motion } from 'framer-motion';
-import { Form } from 'react-router-dom';
+import { Form, useNavigation } from 'react-router-dom';
 import { Floating } from '../Floating/Floating.jsx';
 import { useState } from 'react';
 import { useLocalStorage } from '../Hooks/useLocalStorage.jsx';
+import ClipLoader from 'react-spinners/ClipLoader';
 
 export function SignUp() {
+    console.log('sign up');
+
+    // useState
     const [inputName, setInputName] = useLocalStorage('name', '');
     const [inputUsername, setInputUsername] = useLocalStorage('username', '');
     const [inputEmail, setInputEmail] = useLocalStorage('email', '');
@@ -19,6 +23,13 @@ export function SignUp() {
     const [matchPassword, setMatchPassword] = useState(null);
     const [matchCPassword, setMatchCPassword] = useState(null);
     const [isPasswordMatch, setIsPasswordMatch] = useState(null);
+
+    // useNavigation
+    const navigation = useNavigation();
+    // prettier-ignore
+    const signUpButton = navigation.state === 'idle' ? 'Sign Up' : <ClipLoader color='#fff' size={26} speedMultiplier={0.5} />;
+    const disabled = navigation.state === 'idle' ? false : true;
+    const type = navigation.state === 'idle' ? 'submit' : 'button';
 
     function onInputNameHandler(event) {
         const pattern = new RegExp(event.target.pattern);
@@ -131,6 +142,7 @@ export function SignUp() {
                                 onBlur={onInputNameHandler}
                                 onFocus={onInputNameHandler}
                                 onChange={onInputNameHandler}
+                                disabled={disabled}
                                 className={`${classes.input} ${
                                     matchName === null
                                         ? ''
@@ -163,6 +175,7 @@ export function SignUp() {
                                 onBlur={onInputUsernameHandler}
                                 onFocus={onInputUsernameHandler}
                                 onChange={onInputUsernameHandler}
+                                disabled={disabled}
                                 className={`${classes.input} ${
                                     matchUsername === null
                                         ? ''
@@ -196,6 +209,7 @@ export function SignUp() {
                                 onBlur={onInputEmailHandler}
                                 onFocus={onInputEmailHandler}
                                 onChange={onInputEmailHandler}
+                                disabled={disabled}
                                 className={`${classes.input} ${
                                     matchEmail === null
                                         ? ''
@@ -224,6 +238,7 @@ export function SignUp() {
                                 onBlur={onInputPasswordHandler}
                                 onFocus={onInputPasswordHandler}
                                 onChange={onInputPasswordHandler}
+                                disabled={disabled}
                                 className={`${classes.input} ${
                                     matchPassword === null
                                         ? ''
@@ -261,6 +276,7 @@ export function SignUp() {
                                 onBlur={onInputCPasswordHandler}
                                 onFocus={onInputCPasswordHandler}
                                 onChange={onInputCPasswordHandler}
+                                disabled={disabled}
                                 className={`${classes.input} ${
                                     matchCPassword === null
                                         ? ''
@@ -288,8 +304,12 @@ export function SignUp() {
                                 <Floating message="- Passwords doesn't match" />
                             ) : null}
                         </label>
-                        <button type='submit' className={classes.button}>
-                            Sign Up
+                        <button
+                            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                            type={type}
+                            className={classes.button}
+                        >
+                            {signUpButton}
                         </button>
                     </Form>
                     <div>

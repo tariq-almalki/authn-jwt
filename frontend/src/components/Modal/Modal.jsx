@@ -3,9 +3,9 @@ import styled from 'styled-components';
 const StyledModal = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    height: fit-content;
+    height: 125px;
     width: fit-content;
     background-color: white;
     border-radius: 5px;

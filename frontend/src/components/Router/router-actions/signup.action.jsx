@@ -8,7 +8,9 @@ import { nanoid } from 'nanoid';
 export const signUpAction = async ({ request }) => {
     const data = Object.fromEntries(await request.formData());
 
-    return fetch(`http://localhost:5500/api/users/${nanoid()}`, {
+    console.log('action');
+
+    return await fetch(`http://localhost:5500/api/users/${nanoid()}`, {
         method: 'POST',
         mode: 'cors',
         // you need to stringify Javascript Object
