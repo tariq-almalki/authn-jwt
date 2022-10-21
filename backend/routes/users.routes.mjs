@@ -1,7 +1,12 @@
 import express from 'express';
 import cors from 'cors';
-import { getUsers, getUser, postUser, deleteUser, putUser } from '../middlewares/users.middlewares.mjs';
 import cookieParser from 'cookie-parser';
+import ms from 'ms';
+import rateLimit from 'express-rate-limit';
+import xss from 'xss-clean';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import { getUsers, getUser, postUser, deleteUser, putUser } from '../middlewares/users.middlewares.mjs';
 
 // creating router and exporting it
 export const usersRouter = express.Router();
@@ -16,10 +21,25 @@ const corsOptions = {
 
 const cookieOptions = {
     httpOnly: true,
-    domain: 'http://localhost:5500',
+    // who can receive this cookie
+    domain: 'http://localhost:3000',
+    expires: new Date(Date.now() + ms('10m')),
+    // clients will not send the cookie back to the server in the future if the browser does not have an HTTPS connection
+    secure: true,
 };
 
+const rateLimiterConfig = rateLimit({
+    windowMs: ms('10m'),
+    max: 15,
+    standardHeaders: true,
+    legacyHeaders: false,
+});
+
+usersRouter.use(mongoSanitize());
+usersRouter.use(xss());
+usersRouter.use(helmet());
 usersRouter.use(cookieParser(cookieOptions));
+usersRouter.use(rateLimiterConfig);
 usersRouter.use(cors(corsOptions));
 usersRouter.use(express.json());
 
