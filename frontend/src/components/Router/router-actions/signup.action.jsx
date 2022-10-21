@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { redirect } from 'react-router-dom';
 
 // Actions
 // first executed on POST, PUT, DELETE, PATCH requests
@@ -8,15 +9,22 @@ import { nanoid } from 'nanoid';
 export const signUpAction = async ({ request }) => {
     const data = Object.fromEntries(await request.formData());
 
-    console.log('action');
-
-    return await fetch(`http://localhost:5500/api/users/${nanoid()}`, {
+    const response = await fetch(`http://localhost:5500/api/users/${nanoid()}`, {
         method: 'POST',
         mode: 'cors',
-        // you need to stringify Javascript Object
+        // you need to stringify Javascript Object, so it can be JSON
         body: JSON.stringify(data),
+        // Controls what browsers do with credentials (cookies, HTTP authentication entries, and TLS client certificates)
+        // has three values: omit, same-origin(default), include
+        // Tells browsers to include credentials in both same- and cross-origin requests,
+        // and always use any credentials sent back in responses.
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
     });
+
+    const responseBody = await response.json();
+
+    return redirect(responseBody.url);
 };

@@ -9,8 +9,6 @@ import { useLocalStorage } from '../Hooks/useLocalStorage.jsx';
 import ClipLoader from 'react-spinners/ClipLoader';
 
 export function SignUp() {
-    console.log('sign up');
-
     // useState
     const [inputName, setInputName] = useLocalStorage('name', '');
     const [inputUsername, setInputUsername] = useLocalStorage('username', '');
@@ -27,7 +25,7 @@ export function SignUp() {
     // useNavigation
     const navigation = useNavigation();
     // prettier-ignore
-    const signUpButton = navigation.state === 'idle' ? 'Sign Up' : <ClipLoader color='#fff' size={26} speedMultiplier={0.5} />;
+    const signUpButton = navigation.state === 'idle' ? 'Sign Up' : <ClipLoader color='#fff' size={27} speedMultiplier={0.5} />;
     const disabled = navigation.state === 'idle' ? false : true;
     const type = navigation.state === 'idle' ? 'submit' : 'button';
 
@@ -153,7 +151,7 @@ export function SignUp() {
                                 minLength={3}
                                 maxLength={15}
                                 pattern='^[a-zA-Z]{3,}[ ]?([a-zA-Z]+)?$'
-                                placeholder='name'
+                                placeholder='John Doe'
                                 required
                             />
                             {matchName === null || matchName === true ? null : (
@@ -186,7 +184,7 @@ export function SignUp() {
                                 pattern='^[a-zA-Z][a-zA-Z0-9-_\.]{5,12}$'
                                 minLength={6}
                                 maxLength={12}
-                                placeholder='username'
+                                placeholder='JohnDoe'
                                 required
                             />
                             {matchUsername === null || matchUsername === true ? null : (
@@ -218,7 +216,7 @@ export function SignUp() {
                                         : classes['input-invalid']
                                 }`}
                                 pattern='^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
-                                placeholder='email'
+                                placeholder='JohnDoe@example.com'
                                 required
                             />
                             {matchEmail === null || matchEmail === true ? null : (
@@ -249,7 +247,7 @@ export function SignUp() {
                                 pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'
                                 minLength={8}
                                 maxLength={15}
-                                placeholder='password'
+                                placeholder='Password'
                                 required
                             />
                             {matchPassword === null || matchPassword === true ? null : (
@@ -287,7 +285,7 @@ export function SignUp() {
                                 pattern='^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$'
                                 minLength={8}
                                 maxLength={15}
-                                placeholder='confirm password'
+                                placeholder='Confirm Password'
                                 required
                             />
                             {matchCPassword === null || matchCPassword === true ? null : (
@@ -314,7 +312,7 @@ export function SignUp() {
                     </Form>
                     <div>
                         <p className={classes.p2}>Already have an account? </p>
-                        <StyledLink to='/signin'>Login here</StyledLink>
+                        <StyledLink to='/sign-in'>Login here</StyledLink>
                     </div>
                 </Container>
             </motion.div>

@@ -4,7 +4,7 @@
     border-radius: 10px;
 
     display: grid;
-    grid-template-rows: 100px repeat(3, 75px) 100px;
+    grid-template-rows: 100px repeat(4, 65px) 100px;
     grid-template-columns: 290px;
     justify-content: center;
     align-items: center;

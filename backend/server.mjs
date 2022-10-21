@@ -15,7 +15,7 @@ await import('./db/database.connection.mjs');
 
 const app = express();
 
-if (process.env.NODE_ENV == 'development') {
+if (process.env.NODE_ENV === 'development') {
     app.use(
         morgan('dev', {
             // this option is used for logging requests instead of responses.

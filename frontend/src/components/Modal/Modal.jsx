@@ -6,7 +6,7 @@ const StyledModal = styled.div`
     justify-content: space-around;
     align-items: center;
     height: 125px;
-    width: fit-content;
+    min-width: 250px;
     background-color: white;
     border-radius: 5px;
     border: 0.5px solid #333;

@@ -1,32 +1,39 @@
+import { nanoid } from 'nanoid';
+
 export default [
     {
-        name: 'Flinn Chazerand',
+        _id: nanoid(),
+        name: 'Flinn Chazd',
         username: 'fchazerand0',
         email: 'fchazerand0@bing.com',
-        password: 'U6a1Ult3hSVW',
+        password: nanoid(12),
     },
     {
+        _id: nanoid(),
         name: 'Vitia Tapper',
         username: 'vtapper1',
         email: 'vtapper1@creativecommons.org',
-        password: '7v16foYM',
+        password: nanoid(12),
     },
     {
+        _id: nanoid(),
         name: 'Norry Elph',
         username: 'nelph2',
         email: 'nelph2@samsung.com',
-        password: 'IzZhtzH',
+        password: nanoid(12),
     },
     {
-        name: 'Athene Fitzackerley',
+        _id: nanoid(),
+        name: 'Athene Fitz',
         username: 'afitzackerle',
         email: 'afitzackerley3@msn.com',
-        password: 'v37hZ29',
+        password: nanoid(12),
     },
     {
+        _id: nanoid(),
         name: 'Boy Gorries',
         username: 'bgorries4',
         email: 'bgorries4@csmonitor.com',
-        password: 'Mo8M7Ahc',
+        password: nanoid(12),
     },
 ];
