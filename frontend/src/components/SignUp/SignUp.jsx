@@ -127,7 +127,7 @@ export function SignUp() {
                 <Container>
                     {/* inside of "SignUp" component it will point by default to "/signup" */}
                     {/* thus you don't have to include action='/signup' in "Form" component */}
-                    <Form action='/signup' method='post' className={classes.form}>
+                    <Form action='/sign-up' method='post' className={classes.form}>
                         <h1 className={classes.h1}>Sign Up</h1>
                         <p>it's free and only takes a minute</p>
                         <label className={classes.label}>

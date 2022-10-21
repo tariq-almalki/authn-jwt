@@ -2,7 +2,7 @@ import { StyledLink } from '../misc-components/StyledLink.jsx';
 import { Container } from '../Container/Container.jsx';
 import { motion } from 'framer-motion';
 import { Form } from 'react-router-dom';
-import { ForgotPasswordLink } from '../misc-components/ForgotPasswordLink.jsx';
+import { StyledForgotPasswordLink } from '../misc-components/StyledForgotPasswordLink.jsx';
 import classes from './SignIn.module.css';
 
 export function SignIn() {
@@ -23,7 +23,7 @@ export function SignIn() {
                             Password <br />
                             <input type='text' className={classes.input} required placeholder='Password' />
                         </label>
-                        <ForgotPasswordLink to='/forgot-password'>Forgot Password?</ForgotPasswordLink>
+                        <StyledForgotPasswordLink to='/reset-password'>Forgot Password?</StyledForgotPasswordLink>
                         <button type='submit' className={classes.button}>
                             Sign In
                         </button>

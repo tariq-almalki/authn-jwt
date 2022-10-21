@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useRouteError } from 'react-router-dom';
 import { Modal } from '../../Modal/Modal.jsx';
 import { Overlay } from '../../Overlay/Overlay.jsx';
-import { GoBackLink } from '../../misc-components/GoBackLink.jsx';
+import { StyledGoBackLink } from '../../misc-components/StyledGoBackLink.jsx';
 
 export function SignUpErrorElement() {
     const error = useRouteError();
@@ -18,7 +18,7 @@ export function SignUpErrorElement() {
                 <Overlay>
                     <Modal>
                         {error.message}
-                        <GoBackLink to='/signup' />
+                        <StyledGoBackLink to='/sign-up' />
                     </Modal>
                 </Overlay>
             </Container>

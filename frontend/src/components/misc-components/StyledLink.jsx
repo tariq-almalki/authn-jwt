@@ -10,5 +10,4 @@ export const StyledLink = styled(Link)`
     font-weight: bold;
     font-size: 16px;
     font-family: 'Cairo', sans-serif;
-    transition: all 0.1s ease;
 `;

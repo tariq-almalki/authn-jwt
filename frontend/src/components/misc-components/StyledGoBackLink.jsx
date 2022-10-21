@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const StyledGoBackLink = styled(Link)`
+const GoBackLink = styled(Link)`
     height: fit-content;
     width: fit-content;
     background-color: white;
@@ -21,6 +21,6 @@ const StyledGoBackLink = styled(Link)`
     }
 `;
 
-export function GoBackLink(props) {
-    return <StyledGoBackLink to={props.to}>Go Back</StyledGoBackLink>;
+export function StyledGoBackLink(props) {
+    return <GoBackLink to={props.to}>Go Back</GoBackLink>;
 }

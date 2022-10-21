@@ -1,7 +1,7 @@
 import { Container } from '../Container/Container.jsx';
 import { Overlay } from '../Overlay/Overlay.jsx';
 import { Modal } from '../Modal/Modal.jsx';
-// import { GoBackLink } from '../misc-components/GoBackLink.jsx';
+// import { GoBackLink } from '../misc-components/StyledGoBackLink.jsx';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ export function SuccessPage() {
     useEffect(() => {
         setTimeout(() => {
             if (counter === 0) {
-                return navigate('/signin');
+                return navigate('/sign-in');
             }
             setCounter(counter - 1);
         }, 1000);
@@ -28,7 +28,7 @@ export function SuccessPage() {
                         Success <br />
                         redirect after {counter}
                         {/* manual redirection */}
-                        {/* <GoBackLink to='/signin' /> */}
+                        {/* <StyledGoBackLink to='/signin' /> */}
                     </Modal>
                 </Overlay>
             </Container>

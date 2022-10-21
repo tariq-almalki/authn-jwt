@@ -7,6 +7,9 @@ export const getUsers = (req, res) => {};
 export const getUser = (req, res) => {};
 export const postUser = (req, res) => {
     const { name, username, email, password, cpassword } = req.body;
+    res.json({
+        url: '/success',
+    });
 };
 export const deleteUser = (req, res) => {};
 export const putUser = (req, res) => {};
