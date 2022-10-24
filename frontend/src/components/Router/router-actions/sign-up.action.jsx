@@ -9,7 +9,9 @@ import { redirect } from 'react-router-dom';
 export const signUpAction = async ({ request }) => {
     const data = Object.fromEntries(await request.formData());
 
-    const response = await fetch(`http://localhost:5500/api/users/${nanoid()}`, {
+    data._id = nanoid();
+
+    const response = await fetch(`http://localhost:5500/api/users}`, {
         method: 'POST',
         mode: 'cors',
         // you need to stringify Javascript Object, so it can be JSON

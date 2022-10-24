@@ -18,5 +18,5 @@ const StyledModal = styled.div`
 `;
 
 export function Modal(props) {
-    return <StyledModal>{props.children}</StyledModal>;
+    return <StyledModal style={props.style}>{props.children}</StyledModal>;
 }

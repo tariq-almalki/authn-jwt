@@ -3,10 +3,26 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import ms from 'ms';
 import rateLimit from 'express-rate-limit';
+// This will sanitize any data in req.body, req.query, and req.params
 import xss from 'xss-clean';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
-import { getUsers, getUser, postUser, deleteUser, putUser } from '../middlewares/users.middlewares.mjs';
+import {
+    getUsers,
+    getUser,
+    postUser,
+    postUserErrorHandler,
+    postUserJoiErrorHandler,
+    deleteUser,
+    putUser,
+} from '../middlewares/users.middlewares.mjs';
+// import { body, cookie } from 'express-validator';
+import { createValidator } from 'express-joi-validation';
+import { bodySchema } from '../routes-joi-validators/post-user-validator.mjs';
+
+const validator = createValidator({
+    passError: true,
+});
 
 // creating router and exporting it
 export const usersRouter = express.Router();
@@ -46,8 +62,9 @@ usersRouter.use(express.json());
 usersRouter.get('/api/users', getUsers);
 
 // prettier-ignore
-usersRouter.route('/api/users/:id')
+usersRouter
+    .route('/api/users')
     .get(getUser)
-    .post(postUser)
+    .post(validator.body(bodySchema),postUser, postUserJoiErrorHandler, postUserErrorHandler)
     .delete(deleteUser)
     .put(putUser);

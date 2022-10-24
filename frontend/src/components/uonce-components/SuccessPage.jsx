@@ -24,9 +24,9 @@ export function SuccessPage() {
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <Container>
                 <Overlay>
-                    <Modal>
-                        Success <br />
-                        redirect after {counter}
+                    <Modal style={{ justifyContent: 'center' }}>
+                        <span>Success</span>
+                        <span>redirect after {counter}</span>
                         {/* manual redirection */}
                         {/* <StyledGoBackLink to='/signin' /> */}
                     </Modal>
