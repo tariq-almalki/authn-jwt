@@ -8,9 +8,13 @@ import { StyledGoBackLink } from '../../misc-components/StyledGoBackLink.jsx';
 export function SignUpErrorElement() {
     const error = useRouteError();
 
-    if (error.message.toLowerCase() === 'failed to fetch') {
+    if (error.message && error.message.toLowerCase() === 'failed to fetch') {
         error.message = 'Error Occurred: Please Check if the API is UP';
     }
+
+    localStorage.removeItem('name');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>

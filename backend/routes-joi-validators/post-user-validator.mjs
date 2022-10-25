@@ -1,6 +1,10 @@
 import Joi from 'joi';
 
 export const bodySchema = Joi.object({
+    //  prettier-ignore
+    _id: Joi.string()
+        .trim()
+        .required(),
     name: Joi.string()
         .trim()
         .min(3)

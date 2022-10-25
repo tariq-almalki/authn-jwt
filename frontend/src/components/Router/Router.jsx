@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SignIn } from '../SignIn/SignIn.jsx';
 import { SignUp } from '../SignUp/SignUp.jsx';
 import { signUpAction } from './router-actions/sign-up.action.jsx';
-import { signUpLoader } from './router-loaders/sign-up.loader.jsx';
 import { SignUpErrorElement } from './router-errorElements/sign-up.errorElement.jsx';
 
 import { ResetPassword } from '../ResetPassword/ResetPassword.jsx';
@@ -16,14 +15,12 @@ export function Router() {
             path: '/',
             element: <SignUp />,
             action: signUpAction,
-            loader: signUpLoader,
             errorElement: <SignUpErrorElement />,
         },
         {
             path: '/sign-up',
             element: <SignUp />,
             action: signUpAction,
-            loader: signUpLoader,
             errorElement: <SignUpErrorElement />,
         },
         {

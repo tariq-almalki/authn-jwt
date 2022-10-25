@@ -3,15 +3,12 @@ import * as dotenv from 'dotenv';
 import morgan from 'morgan';
 import colors from 'colors';
 
-// routes
-import { usersRouter } from './routes/users.routes.mjs';
-
 dotenv.config({
     path: './config/.env',
 });
 
-// to connect to Database
-await import('./db/database.connection.mjs');
+// routes
+const { usersRouter } = await import('./routes/users.routes.mjs');
 
 const app = express();
 

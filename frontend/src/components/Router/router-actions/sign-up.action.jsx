@@ -7,15 +7,15 @@ import { redirect } from 'react-router-dom';
 // Actions are called whenever the app sends a non-get submission
 // you can use the returned value, using useActionData() hook
 export const signUpAction = async ({ request }) => {
-    const data = Object.fromEntries(await request.formData());
+    const formData = Object.fromEntries(await request.formData());
 
-    data._id = nanoid();
+    formData['_id'] = nanoid();
 
-    const response = await fetch(`http://localhost:5500/api/users}`, {
+    const response = await fetch('http://localhost:5500/api/users', {
         method: 'POST',
         mode: 'cors',
         // you need to stringify Javascript Object, so it can be JSON
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
         // Controls what browsers do with credentials (cookies, HTTP authentication entries, and TLS client certificates)
         // has three values: omit, same-origin(default), include
         // Tells browsers to include credentials in both same- and cross-origin requests,

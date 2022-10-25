@@ -1,12 +1,22 @@
-/** @type {import("express").RequestHandler} */
 const { User } = await import('../models/User.mjs');
 import jwt from 'jsonwebtoken';
+import expressjwt from 'express-jwt';
 import bcrypt from 'bcrypt';
+import createError from 'http-errors';
 
-export const getUsers = (req, res) => {};
-export const getUser = (req, res) => {};
-export const postUser = async (req, res) => {
-    // if we're in here then the query was valid!
+export const getUser = (req, res, next) => {};
+export const postUser = async (req, res, next) => {
+    // if we're in here then the query was valid!. Joi
+
+    const { email } = req.body;
+
+    const user = await User.findOne({ email });
+
+    if (user) {
+        return next(createError(409, 'Email already exists'));
+    }
+
+    await User.create(req.body);
 
     res.json({
         url: '/success',
@@ -14,7 +24,7 @@ export const postUser = async (req, res) => {
     });
 };
 
-export const postUserJoiErrorHandler = (err, req, res, next) => {
+export const JoiErrorHandler = (err, req, res, next) => {
     if (err && err.error && err.error.isJoi) {
         // we had a joi error, let's return a custom 400 json response
         return res.status(400).json({
@@ -26,15 +36,14 @@ export const postUserJoiErrorHandler = (err, req, res, next) => {
     next(err);
 };
 
-export const postUserErrorHandler = (err, req, res, next) => {
+export const ErrorHandler = (err, req, res, next) => {
     if (res.headersSent) {
         return next(err);
     }
 
-    res.status(400).json({
-        status: 'error',
-        err,
-    });
+    // err is http-error err object it consist of many properties, if you passed express will automatically
+    // look up the message property and put it in an object an send it as response.
+    res.status(err.status).json(err);
 };
 
 export const deleteUser = (req, res) => {};

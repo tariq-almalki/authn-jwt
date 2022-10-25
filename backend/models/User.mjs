@@ -1,4 +1,4 @@
-export default (async function () {
+export const User = await (async function () {
     const { mongooseInstance: mongoose } = await import('../db/database.connection.mjs');
     const { Schema } = mongoose;
 

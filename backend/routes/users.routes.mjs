@@ -8,15 +8,13 @@ import xss from 'xss-clean';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
 import {
-    getUsers,
     getUser,
     postUser,
-    postUserErrorHandler,
-    postUserJoiErrorHandler,
     deleteUser,
     putUser,
+    ErrorHandler,
+    JoiErrorHandler,
 } from '../middlewares/users.middlewares.mjs';
-// import { body, cookie } from 'express-validator';
 import { createValidator } from 'express-joi-validation';
 import { bodySchema } from '../routes-joi-validators/post-user-validator.mjs';
 
@@ -46,7 +44,7 @@ const cookieOptions = {
 
 const rateLimiterConfig = rateLimit({
     windowMs: ms('10m'),
-    max: 15,
+    max: 154534545,
     standardHeaders: true,
     legacyHeaders: false,
 });
@@ -59,12 +57,10 @@ usersRouter.use(rateLimiterConfig);
 usersRouter.use(cors(corsOptions));
 usersRouter.use(express.json());
 
-usersRouter.get('/api/users', getUsers);
-
 // prettier-ignore
-usersRouter
-    .route('/api/users')
-    .get(getUser)
-    .post(validator.body(bodySchema),postUser, postUserJoiErrorHandler, postUserErrorHandler)
-    .delete(deleteUser)
-    .put(putUser);
+usersRouter.route('/api/users')
+            .post(validator.body(bodySchema),postUser, JoiErrorHandler, ErrorHandler)
+            .delete(deleteUser)
+            .put(putUser);
+
+usersRouter.get('/api/users/:id', getUser);

@@ -6,9 +6,7 @@ dotenv.config({
     path: './config/.env',
 });
 
-const { default: promiseUser } = await import('./models/User.mjs');
-
-const User = await promiseUser;
+const { User } = await import('./models/User.mjs');
 
 async function importData() {
     try {
