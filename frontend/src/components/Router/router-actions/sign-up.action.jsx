@@ -26,7 +26,13 @@ export const signUpAction = async ({ request }) => {
         },
     });
 
+    const status = response.status;
+
     const responseBody = await response.json();
+
+    if (status >= 400 || status <= 599) {
+        throw responseBody;
+    }
 
     return redirect(responseBody.url);
 };

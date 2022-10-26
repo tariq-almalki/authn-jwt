@@ -34,8 +34,7 @@ export const User = await (async function () {
             password: {
                 type: String,
                 trim: true,
-                minLength: [8, 'Must be at least 8, got {VALUE}'],
-                maxLength: [15, 'Must be at most 15, got {VALUE}'],
+                maxLength: [60, 'hashed value must be 60, got {VALUE}'],
                 required: [true, 'Password is Required'],
             },
         },

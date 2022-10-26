@@ -7,23 +7,16 @@ import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
-import {
-    getUser,
-    postUser,
-    deleteUser,
-    putUser,
-    ErrorHandler,
-    JoiErrorHandler,
-} from '../middlewares/users.middlewares.mjs';
+import { postUser, deleteUser, changeUserPassword } from '../middlewares/users.middlewares.mjs';
 import { createValidator } from 'express-joi-validation';
 import { bodySchema } from '../routes-joi-validators/post-user-validator.mjs';
+
+// creating router and exporting it
+export const usersRouter = express.Router();
 
 const validator = createValidator({
     passError: true,
 });
-
-// creating router and exporting it
-export const usersRouter = express.Router();
 
 const corsOptions = {
     // Configures the Access-Control-Allow-Origin CORS header, meaning what client can receive the response.
@@ -58,9 +51,30 @@ usersRouter.use(cors(corsOptions));
 usersRouter.use(express.json());
 
 // prettier-ignore
-usersRouter.route('/api/users')
-            .post(validator.body(bodySchema),postUser, JoiErrorHandler, ErrorHandler)
-            .delete(deleteUser)
-            .put(putUser);
+usersRouter
+.route('/api/users')
+.post(validator.body(bodySchema), postUser)
+.delete(deleteUser)
+.put(changeUserPassword);
 
-usersRouter.get('/api/users/:id', getUser);
+usersRouter.use((err, req, res, next) => {
+    if (err && err.error && err.error.isJoi) {
+        // we had a joi error, let's return a custom 400 json response
+        return res.status(400).json({
+            type: err.type, // will be "query" here, but could be "headers", "body", or "params"
+            message: err.error.toString(),
+        });
+    }
+    // pass on to another error handler
+    next(err);
+});
+
+usersRouter.use((err, req, res, next) => {
+    if (res.headersSent) {
+        return next(err);
+    }
+
+    // err is http-error err object it consist of many properties, if you passed express will automatically
+    // look up the message property and put it in an object an send it as response.
+    res.status(err.status).json(err);
+});
