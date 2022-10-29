@@ -1,9 +1,18 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+//
 import { SignIn } from '../SignIn/SignIn.jsx';
+import { signInAction } from './router-actions/signInAction.js';
+import { SignInErrorElement } from './router-errorElements/SignInErrorElement.jsx';
+//
 import { SignUp } from '../SignUp/SignUp.jsx';
-import { signUpAction } from './router-actions/sign-up.action.jsx';
-import { SignUpErrorElement } from './router-errorElements/sign-up.errorElement.jsx';
+import { signUpAction } from './router-actions/signUpAction.js';
+import { SignUpErrorElement } from './router-errorElements/SignUpErrorElement.jsx';
 
+import { HomePage } from '../HomePage/HomePage.jsx';
+import { HomePageErrorElement } from './router-errorElements/HomePageErrorElement.jsx';
+import { homepageLoader } from './router-loaders/homepageLoader.js';
+
+//
 import { ResetPassword } from '../ResetPassword/ResetPassword.jsx';
 
 // used only once
@@ -26,6 +35,14 @@ export function Router() {
         {
             path: '/sign-in',
             element: <SignIn />,
+            action: signInAction,
+            errorElement: <SignInErrorElement />,
+        },
+        {
+            path: '/homepage',
+            element: <HomePage />,
+            errorElement: <HomePageErrorElement />,
+            loader: homepageLoader,
         },
         {
             path: '/reset-password',

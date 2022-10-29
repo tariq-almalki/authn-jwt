@@ -7,12 +7,11 @@ import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
-import { postUser, deleteUser, changeUserPassword } from '../middlewares/users.middlewares.mjs';
+import { signInUser } from '../middlewares/signInMiddleware.js';
+import { bodySchema } from '../routes-joi-validators/signInValidator.js';
 import { createValidator } from 'express-joi-validation';
-import { bodySchema } from '../routes-joi-validators/post-user-validator.mjs';
 
-// creating router and exporting it
-export const usersRouter = express.Router();
+export const signInRouter = express.Router();
 
 const validator = createValidator({
     passError: true,
@@ -37,27 +36,22 @@ const cookieOptions = {
 
 const rateLimiterConfig = rateLimit({
     windowMs: ms('10m'),
-    max: 154534545,
+    max: 50,
     standardHeaders: true,
     legacyHeaders: false,
 });
 
-usersRouter.use(mongoSanitize());
-usersRouter.use(xss());
-usersRouter.use(helmet());
-usersRouter.use(cookieParser(cookieOptions));
-usersRouter.use(rateLimiterConfig);
-usersRouter.use(cors(corsOptions));
-usersRouter.use(express.json());
+signInRouter.use(mongoSanitize());
+signInRouter.use(xss());
+signInRouter.use(helmet());
+signInRouter.use(cookieParser(cookieOptions));
+signInRouter.use(rateLimiterConfig);
+signInRouter.use(cors(corsOptions));
+signInRouter.use(express.json());
 
-// prettier-ignore
-usersRouter
-.route('/api/users')
-.post(validator.body(bodySchema), postUser)
-.delete(deleteUser)
-.put(changeUserPassword);
+signInRouter.post('/api/sign-in', validator.body(bodySchema), signInUser);
 
-usersRouter.use((err, req, res, next) => {
+signInRouter.use((err, req, res, next) => {
     if (err && err.error && err.error.isJoi) {
         // we had a joi error, let's return a custom 400 json response
         return res.status(400).json({
@@ -69,7 +63,7 @@ usersRouter.use((err, req, res, next) => {
     next(err);
 });
 
-usersRouter.use((err, req, res, next) => {
+signInRouter.use((err, req, res, next) => {
     if (res.headersSent) {
         return next(err);
     }

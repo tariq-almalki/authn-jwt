@@ -30,7 +30,7 @@ export const signUpAction = async ({ request }) => {
 
     const responseBody = await response.json();
 
-    if (status >= 400 || status <= 599) {
+    if (status >= 400 && status <= 599) {
         throw responseBody;
     }
 

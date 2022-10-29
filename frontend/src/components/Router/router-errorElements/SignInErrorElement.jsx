@@ -5,16 +5,12 @@ import { Modal } from '../../Modal/Modal.jsx';
 import { Overlay } from '../../Overlay/Overlay.jsx';
 import { StyledGoBackLink } from '../../misc-components/StyledGoBackLink.jsx';
 
-export function SignUpErrorElement() {
+export function SignInErrorElement() {
     const error = useRouteError();
 
     if (error.message && error.message.toLowerCase() === 'failed to fetch') {
         error.message = 'Error Occurred: Please Check if the API is UP';
     }
-
-    localStorage.removeItem('name');
-    localStorage.removeItem('username');
-    localStorage.removeItem('email');
 
     return (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -22,7 +18,7 @@ export function SignUpErrorElement() {
                 <Overlay>
                     <Modal>
                         {error.message}
-                        <StyledGoBackLink to='/sign-up' />
+                        <StyledGoBackLink to='/sign-in' />
                     </Modal>
                 </Overlay>
             </Container>

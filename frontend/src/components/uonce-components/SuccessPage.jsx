@@ -10,6 +10,10 @@ export function SuccessPage() {
     const [counter, setCounter] = useState(3);
     const navigate = useNavigate();
 
+    localStorage.removeItem('name');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+
     // for automatic redirection
     useEffect(() => {
         setTimeout(() => {
@@ -25,8 +29,8 @@ export function SuccessPage() {
             <Container>
                 <Overlay>
                     <Modal style={{ justifyContent: 'center' }}>
-                        <span>Success</span>
-                        <span>redirect after {counter}</span>
+                        <span style={{ color: '#000' }}>Success</span>
+                        <span style={{ color: '#000' }}>redirect after {counter}</span>
                         {/* manual redirection */}
                         {/* <StyledGoBackLink to='/signin' /> */}
                     </Modal>
