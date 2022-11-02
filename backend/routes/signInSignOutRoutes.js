@@ -7,11 +7,11 @@ import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
-import { signInUser } from '../middlewares/signInMiddleware.js';
+import { signInUser, signOutUser } from '../middlewares/signInSignOutMiddleware.js';
 import { bodySchema } from '../routes-joi-validators/signInValidator.js';
 import { createValidator } from 'express-joi-validation';
 
-export const signInRouter = express.Router();
+export const signInSignOutRouter = express.Router();
 
 const validator = createValidator({
     passError: true,
@@ -36,22 +36,23 @@ const cookieOptions = {
 
 const rateLimiterConfig = rateLimit({
     windowMs: ms('10m'),
-    max: 50,
+    max: 345345,
     standardHeaders: true,
     legacyHeaders: false,
 });
 
-signInRouter.use(mongoSanitize());
-signInRouter.use(xss());
-signInRouter.use(helmet());
-signInRouter.use(cookieParser(cookieOptions));
-signInRouter.use(rateLimiterConfig);
-signInRouter.use(cors(corsOptions));
-signInRouter.use(express.json());
+signInSignOutRouter.use(mongoSanitize());
+signInSignOutRouter.use(xss());
+signInSignOutRouter.use(helmet());
+signInSignOutRouter.use(cookieParser(cookieOptions));
+signInSignOutRouter.use(rateLimiterConfig);
+signInSignOutRouter.use(cors(corsOptions));
+signInSignOutRouter.use(express.json());
 
-signInRouter.post('/api/sign-in', validator.body(bodySchema), signInUser);
+signInSignOutRouter.post('/api/sign-in', validator.body(bodySchema), signInUser);
+signInSignOutRouter.post('/api/sign-out', signOutUser);
 
-signInRouter.use((err, req, res, next) => {
+signInSignOutRouter.use((err, req, res, next) => {
     if (err && err.error && err.error.isJoi) {
         // we had a joi error, let's return a custom 400 json response
         return res.status(400).json({
@@ -63,7 +64,7 @@ signInRouter.use((err, req, res, next) => {
     next(err);
 });
 
-signInRouter.use((err, req, res, next) => {
+signInSignOutRouter.use((err, req, res, next) => {
     if (res.headersSent) {
         return next(err);
     }

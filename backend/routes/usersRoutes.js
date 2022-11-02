@@ -7,10 +7,9 @@ import rateLimit from 'express-rate-limit';
 import xss from 'xss-clean';
 import helmet from 'helmet';
 import mongoSanitize from 'express-mongo-sanitize';
-import { getUser, postUser, deleteUser, changeUserPassword } from '../middlewares/usersMiddlewares.js';
+import { getUser, postUser, changeUserPassword } from '../middlewares/usersMiddlewares.js';
 import { createValidator } from 'express-joi-validation';
 import { bodySchema } from '../routes-joi-validators/postUserValidator.js';
-import createError from 'http-errors';
 
 // creating router and exporting it
 export const usersRouter = express.Router();
@@ -38,7 +37,7 @@ const cookieOptions = {
 
 const rateLimiterConfig = rateLimit({
     windowMs: ms('10m'),
-    max: 50,
+    max: 45345,
     standardHeaders: true,
     legacyHeaders: false,
 });
@@ -55,13 +54,11 @@ usersRouter.use(express.json());
 usersRouter
     .route('/api/users')
     .post(validator.body(bodySchema), postUser)
-    .delete(deleteUser)
     .put(changeUserPassword);
 
 usersRouter.get('/api/users/data', getUser);
 
 usersRouter.use((err, req, res, next) => {
-
     if (err && err.error && err.error.isJoi) {
         // we had a joi error, let's return a custom 400 json response
         return res.status(400).json({

@@ -1,16 +1,17 @@
 const { User } = await import('../models/User.js');
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import createError from 'http-errors';
 
-export const getUser = async (req, res) => {
+export const getUser = async (req, res, next) => {
     if (!req.cookies['AUTH_TOKEN']) {
-        next(createError(401, 'Unauthorized Access'));
+        return next(createError(401, 'Unauthorized Access'));
     }
 
     const token = req.cookies['AUTH_TOKEN'];
 
     try {
-        const payload = jwtr.verify(token, process.env.JWT_SECRET_TOKEN);
+        const payload = jwt.verify(token, process.env.JWT_SECRET_TOKEN);
         const { email } = payload;
 
         const user = await User.findOne({ email });
@@ -22,7 +23,7 @@ export const getUser = async (req, res) => {
             password: user.password,
         });
     } catch (err) {
-        next(createError(401, 'Unauthorized Access'));
+        return next(createError(401, 'Unauthorized Access'));
     }
 };
 
@@ -52,9 +53,8 @@ export const postUser = async (req, res, next) => {
     }
 
     res.status(201).json({
-        url: '/success',
+        url: '/redirection',
     });
 };
 
-export const deleteUser = (req, res) => {};
 export const changeUserPassword = (req, res) => {};
