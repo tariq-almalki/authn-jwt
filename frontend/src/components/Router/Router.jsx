@@ -11,12 +11,13 @@ import { SignUpErrorElement } from './router-errorElements/SignUpErrorElement.js
 import { HomePage } from '../HomePage/HomePage.jsx';
 import { HomePageErrorElement } from './router-errorElements/HomePageErrorElement.jsx';
 import { homepageLoader } from './router-loaders/homepageLoader.js';
+import { homepageAction } from './router-actions/homepageAction.js';
 
 //
 import { ResetPassword } from '../ResetPassword/ResetPassword.jsx';
 
 // used only once
-import { SuccessPage } from '../uonce-components/SuccessPage.jsx';
+import { RedirectionPage } from '../RedirectionPage/RedirectionPage.jsx';
 
 export function Router() {
     const router = createBrowserRouter([
@@ -42,6 +43,7 @@ export function Router() {
             path: '/homepage',
             element: <HomePage />,
             errorElement: <HomePageErrorElement />,
+            action: homepageAction,
             loader: homepageLoader,
         },
         {
@@ -49,8 +51,8 @@ export function Router() {
             element: <ResetPassword />,
         },
         {
-            path: '/success',
-            element: <SuccessPage />,
+            path: '/redirection',
+            element: <RedirectionPage />,
         },
     ]);
 

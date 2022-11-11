@@ -1,38 +1,40 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Container } from '../Container/Container.jsx';
 import { BubbleMenu } from '../BubbleMenu/BubbleMenu.jsx';
 import classes from './HomePage.module.css';
 import { useReducer } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, Form } from 'react-router-dom';
+import logoutIcon from '../../images/logout.png';
 
 const initialState = {
     styles: {
         color: 'transparent',
-        'text-shadow': '0 0 8px rgba(0,0,0,1)',
-        'background-color': 'white',
+        textShadow: '0 0 8px rgba(0,0,0,1)',
+        backgroundColor: 'white',
         resize: 'none',
     },
     isRevealed: false,
-    text: 'Show Password',
+    text: 'Show Hashed Password',
 };
 
 function textareaReducer(state, action) {
     if (action.boolean) {
         return {
-            styles: { color: 'black', 'background-color': 'white', resize: 'none' },
+            styles: { color: 'black', backgroundColor: 'white', resize: 'none' },
             isRevealed: !state.isRevealed,
-            text: 'Hide Password',
+            text: 'Hide Hashed Password',
         };
     }
 
     return {
         styles: {
             color: 'transparent',
-            'text-shadow': '0 0 8px rgba(0,0,0,1)',
-            'background-color': 'white',
+            textShadow: '0 0 8px rgba(0,0,0,1)',
+            backgroundColor: 'white',
             resize: 'none',
         },
         isRevealed: !state.isRevealed,
-        text: 'Show Password',
+        text: 'Show Hashed Password',
     };
 }
 
@@ -48,7 +50,14 @@ export function HomePage() {
 
     return (
         <>
-            <BubbleMenu />
+            <BubbleMenu>
+                <Form method='POST' action='/homepage'>
+                    <button className={classes['logout-button']} type='submit'>
+                        <img className={classes.img} src={logoutIcon} height={24} width={24} alt='' />
+                        Logout
+                    </button>
+                </Form>
+            </BubbleMenu>
             <Container>
                 <div className={classes.squircle}>
                     <h1>Homepage</h1>

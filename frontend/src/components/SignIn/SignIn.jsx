@@ -46,7 +46,11 @@ export function SignIn() {
                             />
                         </label>
                         <StyledForgotPasswordLink to='/reset-password'>Forgot Password?</StyledForgotPasswordLink>
-                        <button type={type} className={classes.button}>
+                        <button
+                            type={type}
+                            className={classes.button}
+                            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                        >
                             {signUpButton}
                         </button>
                     </Form>

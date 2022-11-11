@@ -29,11 +29,11 @@
 
 .input {
     width: 300px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     color: rgb(0, 0, 0);
     background-color: white;
-    border: 1px solid #333;
+    border: 0.5px solid #333;
 }
 
 .button {
@@ -57,4 +57,25 @@
 
 .button:active {
     transform: scale(95%);
+}
+
+.logout-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Cairo', sans-serif;
+}
+
+.logout-button:hover {
+    color: aliceblue;
+}
+
+.img {
+    vertical-align: middle;
+    margin-right: 7px;
 }

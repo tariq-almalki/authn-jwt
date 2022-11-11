@@ -8,7 +8,13 @@ export async function homepageLoader() {
         },
     });
 
+    const status = response.status;
+
     const data = await response.json();
+
+    if (status >= 400 && status <= 599) {
+        throw data;
+    }
 
     return data;
 }

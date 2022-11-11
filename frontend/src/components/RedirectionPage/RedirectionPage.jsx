@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function SuccessPage() {
+export function RedirectionPage() {
     const [counter, setCounter] = useState(3);
     const navigate = useNavigate();
 
@@ -31,8 +31,6 @@ export function SuccessPage() {
                     <Modal style={{ justifyContent: 'center' }}>
                         <span style={{ color: '#000' }}>Success</span>
                         <span style={{ color: '#000' }}>redirect after {counter}</span>
-                        {/* manual redirection */}
-                        {/* <StyledGoBackLink to='/signin' /> */}
                     </Modal>
                 </Overlay>
             </Container>
