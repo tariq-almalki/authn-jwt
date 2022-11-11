@@ -1,6 +1,6 @@
 # Authentication with JWT
 
-this Project was built with React, React-Query, React-Router, Framer-motion, Express, Webpack, MongoDB, Mongoose.
+this Project was built with React, React-Router, Framer-motion, Express, Webpack, MongoDB, Mongoose, Redis.
 
 # Sign In Page
 
