@@ -67,7 +67,7 @@ _the part between square brackets is optional you run it without it._
 
 here is the full user journey starting from sign up page until he reaches homepage.
 
-
+![user-journey](./README-related-files/userJoureny.gif)
 
 # Sign In Page
 
