@@ -44,6 +44,7 @@ steps for installation locally
     - docker
 
 **to make sure node installed, type** `node -v` **in the CLI**
+
 **to make sure mongodb installed type** `sc query mongodb` **in the CLI**
 
 _NOTE: this is actually for querying the status of the service if it's up or not(I mean mongodb)_
