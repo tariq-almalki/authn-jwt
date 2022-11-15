@@ -62,7 +62,7 @@ for spinning up redis container use this command(after making sure docker is up)
 
 `docker run --name redis-container -dp [127.0.0.1:]6379:6379 redis`
 
-_the part between square brackets is optional you run it without it._
+_the part between square brackets is optional you can run it without it._
 
 ## Preview
 
