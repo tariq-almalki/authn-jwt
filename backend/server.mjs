@@ -7,7 +7,7 @@ import colors from 'colors';
 // you need to run redis server to connect to.
 
 dotenv.config({
-    path: './config/.env',
+	path: './config/.env',
 });
 
 // routes
@@ -17,12 +17,12 @@ const { signInSignOutRouter } = await import('./routes/signInSignOutRoutes.js');
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
-    app.use(
-        morgan('dev', {
-            // this option is used for logging requests instead of responses.
-            // immediate: true,
-        })
-    );
+	app.use(
+		morgan('dev', {
+			// this option is used for logging requests instead of responses.
+			// immediate: true,
+		})
+	);
 }
 
 // "app.use" does partial matching, so '/' will match '/', '/users', ...
@@ -31,5 +31,5 @@ app.use('/', usersRouter);
 app.use('/', signInSignOutRouter);
 
 app.listen(process.env.PORT, () => {
-    console.log('server started at PORT 5500'.white.bold);
+	console.log('server'.yellow.bold, ' started at PORT 5500'.white.bold);
 });
