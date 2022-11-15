@@ -21,7 +21,7 @@ export const User = await (async function () {
                 trim: true,
                 unique: true,
                 minLength: [6, 'Must be at least 6, got {VALUE}'],
-                maxLength: [12, 'Must  be at most, got {VALUE}'],
+                maxLength: [12, 'Must  be at most 12, got {VALUE}'],
                 required: [true, 'Username is Required'],
             },
             email: {

@@ -14,9 +14,9 @@
 
 JWT(Json Web Token), JWTs represent a set of claims as a JSON object that is encoded in a JWS and/or JWE structure.
 
-although I call it(also most if not everyone) JWT, it is in fact called Secured JWS(Json Web Signature). because there is a third part in JWT called "Signature" which can be used to guarantee the content of the token, the receiver can Base64Url the "header" and Base64Url the "payload" and concatenate the results with "." and then pass it as first parameter in the hashing function "HMACSHA256" if you were using symmetric encryption which is essentially, one shared private key between the sender and the receiver, this private key will be the second parameter for the aforementioned hashing function by that, the hashing function will produce usually a hexadecimal output(64 char if it's SHA256(256 correspond to the number of the bits), because for every 4 bit there is 1 hexadecimal char).
+although I call it(also most if not everyone) JWT, it is in fact called Secured JWS(Json Web Signature). because there is a third part in JWT called "Signature" which can be used to guarantee the content of the token, the receiver can Base64Url the "header" and Base64Url the "payload" and concatenate the results with "." and then pass it as first parameter to the hashing function "HMACSHA256" if you were using symmetric encryption which is essentially, one shared private key between the sender and the receiver, this private key will be the second parameter for the aforementioned hashing function by that, the hashing function will produce usually a hexadecimal output(64 char if it's SHA256(256 correspond to the number of the bits), because for every 4 bit there is 1 hexadecimal char).
 
-So JWT is merely a set of claims encoded as JSON it becomes Unsecured JWS, if JOSE(JSON Object Signing and Encryption) Header is set and "alg" property is set to 'none', and it becomes secured JWS if 'alg' is set to one of these algorithms, HS[256 || 384 || 512] or RS[256 || 384 || 512] or ES[256 || 384 || 512].
+So JWT is merely a set of claims encoded as JSON, it becomes Unsecured JWS, if JOSE(JSON Object Signing and Encryption) Header is set and "alg" property is set to 'none', and it becomes secured JWS if 'alg' is set to one of these algorithms, HS[256 || 384 || 512] or RS[256 || 384 || 512] or ES[256 || 384 || 512].
 
 HS256 => HMAC + SHA256
 RS256 => RSASSA-PKCS1-v1_5 + SHA256
@@ -43,10 +43,6 @@ steps for installation locally
     - mongodb
     - docker
 
-3. cd to authn-jwt
-4. type `npm i && npm start` in the CLI
-5. repeat step 4 for frontend folder and backend folder.
-
 **to make sure node installed, type** `node -v` **in the CLI**
 **to make sure mongodb installed type** `sc query mongodb` **in the CLI**
 
@@ -55,6 +51,9 @@ _NOTE: this is actually for querying the status of the service if it's up or not
 _NOTE: I'm using here sc which an acronym for service controller which is a tool you can utilize in windows for Creating, Starting, Stopping, Querying or Deleting any Windows SERVICE in Windows😁_
 
 **to make sure docker installed , type** `docker -v` **in the CLI**
+
+3. cd to authn-jwt
+4. cd to frontend and backend folders and type `npm i && npm start` in the CLI
 
 you need nodejs for executing javascript, mongodb for storing the user information, and docker you need it because you need to spin up redis container, because the app stores JWT token upon creation in redis, so later when user attempted to log out, JWT token will be deleted, so any authenticated route will return 'Unauthorized Access' if user attempted to access it because there is no JWT token in the sent cookies(yes I stored JWT tokens in the cookies😒).
 
@@ -72,13 +71,15 @@ here is the full user journey starting from sign up page until he reaches homepa
 
 # Sign In Page
 
-![sign-in-page](./README-Pictures/sign-in-page.png)
+![sign-in-page](./README-related-files/sign-in-page.png)
 
 # Sign Up Page
 
-![sign-up-page](./README-Pictures/sign-up-page.png)
+![sign-up-page](./README-related-files/sign-up-page.png)
 
 # Homepage
+
+![homepage](./README-related-files/home-page.png)
 
 ## Motivation
 
