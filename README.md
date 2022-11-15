@@ -81,7 +81,7 @@ here is the full user journey starting from sign up page until he reaches homepa
 
 ![homepage](./README-related-files/home-page.png)
 
-# file structure of the project
+# directory tree of the project
 
 ![structure](./README-related-files/carbon.svg)
 
