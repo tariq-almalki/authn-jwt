@@ -81,6 +81,10 @@ here is the full user journey starting from sign up page until he reaches homepa
 
 ![homepage](./README-related-files/home-page.png)
 
+# file structure of the project
+
+![structure](./README-related-files/carbon.svg)
+
 ## Motivation
 
 authn-jwt project was built behind the incentive of trying to implement JWT(Json Web Token)
