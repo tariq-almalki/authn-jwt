@@ -18,8 +18,8 @@ although I call it(also most if not everyone) JWT, it is in fact called Secured 
 
 So JWT is merely a set of claims encoded as JSON, it becomes Unsecured JWS, if JOSE(JSON Object Signing and Encryption) Header is set and "alg" property is set to 'none', and it becomes secured JWS if 'alg' is set to one of these algorithms, HS[256 || 384 || 512] or RS[256 || 384 || 512] or ES[256 || 384 || 512].
 
-HS256 => HMAC + SHA256
-RS256 => RSASSA-PKCS1-v1_5 + SHA256
+HS256 => HMAC + SHA256 <br/>
+RS256 => RSASSA-PKCS1-v1_5 + SHA256 <br/>
 ES256 => ECDSA + P-256 + SHA256
 
 ## Features
