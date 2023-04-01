@@ -1,6 +1,6 @@
 # excluded 
 /backend/node_modules/
-/backend/config/.env
+/backend/config/.env.local
 
 /frontend/node_modules/
 
