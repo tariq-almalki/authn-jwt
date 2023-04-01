@@ -7,7 +7,7 @@ import colors from 'colors';
 // you need to run redis server to connect to.
 
 dotenv.config({
-	path: './config/.env',
+	path: './config/.env.local',
 });
 
 // routes

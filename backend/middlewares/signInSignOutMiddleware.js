@@ -32,6 +32,7 @@ export const signInUser = async (req, res, next) => {
 		return next(createError(401, 'Email or Password is wrong'));
 	}
 
+
 	const token = jwt.sign(
 		{
 			name: user.name,

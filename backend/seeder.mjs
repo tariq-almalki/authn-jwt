@@ -1,12 +1,12 @@
 import dotenv from 'dotenv';
 import colors from 'colors';
-import { default as users } from './dummy-data/users.mjs';
+import { default as users } from './dummy-data/users.js';
 
 dotenv.config({
     path: './config/.env',
 });
 
-const { User } = await import('./models/User.mjs');
+const { User } = await import('./models/User.js');
 
 async function importData() {
     try {
